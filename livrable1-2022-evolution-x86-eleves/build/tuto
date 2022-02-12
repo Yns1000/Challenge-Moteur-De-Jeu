@@ -1,0 +1,8 @@
+Probleme exemple.exe /liaisons
+
+ cp ../libavalam/libavalam.so libavalam.so
+ls lib
+ldd exemple.exe //verif
+export LD_LIBRARY_PATH=$(pwd)/lib
+ldd exemple.exe //verif
+
