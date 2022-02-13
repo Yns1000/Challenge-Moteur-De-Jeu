@@ -2,7 +2,6 @@
 #include "../include/avalam.h"
 #include <stdlib.h>
 #include "topologie.h"
-#include <string.h>
 
 octet bonusJ,bonusR;//Bonus & Malus (jaune)
     octet malusJ,malusR;//Bonus & Malus (rouge)
@@ -12,26 +11,22 @@ octet bonusJ,bonusR;//Bonus & Malus (jaune)
 	int menu(), rep, monchoix;
 	int i;
 	T_Score a;
+	
+	int j;
 
-	int test, num;
-	char nom [50];
+	int test;
 
 //Prototype de fonctions utilisées ci-dessous
-void Jouer(int argc, char nom [50]);
+int Jouer(int argc, char **argv);
 void Aff(); //Affichage du plateau independant
-void CreaJS(int argc, char nom [50]); //MAJ du fichier js (oups.js)
+void CreaJS(); //MAJ du fichier js (oups.js)
+void CreaJSarg(int argc, char **argv); //MAJ du fichier entré en paramètre
 
-int main(int argc,char **argv) {
-
-if (argc == 1)
-	printf("\n        Utilisation de Coups.js (par défaut");
-else if (argc==2){
-	printf("\n        Utilisation de %s", argv[1]);
-	num = argc;
-	strcpy(nom, argv[1]);
+int main(int argc, char **argv) {
 
 
-}
+
+j=argc;
 
 
 	printf0("Création de la position initiale ...\n"); 
@@ -47,7 +42,11 @@ else if (argc==2){
 
 			//////////////////////ModifJSON//////////////////////////////////
 				
-								CreaJS(argc, nom);
+								if (j==0){
+									CreaJS();
+								}
+								else
+									CreaJSarg; 
 
 			/////////////////////////////////////////////////////////////////
 
@@ -61,7 +60,7 @@ do {
 	rep=menu();
 	switch (rep) {
     case 1 : 
-			Jouer(argc, argv[1]);
+			Jouer(argc, argv);
              break;
     case 2 :
 			printf("Voici le plateau actuel :\n\n");
@@ -110,9 +109,11 @@ void Aff(){
 	return;
 }
 
-void Jouer (int argc, char nom [50]) {
+int Jouer (int argc, char **argv) {
 	//Pt bonus/malus ////////////// DEBUT (ne pas toucher !!!)
 			
+printf("%d", j);
+
 			do{
 				printf("\033[33;01m\n\n Joueur : 1 (jaune) **BONUS** \n\n Veuillez placer votre bonus à la place d'un pion jaune disponible : \033[00m");
 				scanf("%hhd", &p.evolution.bonusJ);
@@ -147,7 +148,11 @@ void Jouer (int argc, char nom [50]) {
 			}while (p.evolution.malusJ<0 || p.evolution.malusJ>47 || p.evolution.malusJ == p.evolution.bonusJ || p.evolution.malusJ == p.evolution.bonusR || p.evolution.malusJ == p.evolution.malusR || p.evolution.malusJ == 0 || p.evolution.malusJ == 4 || p.evolution.malusJ == 9 || p.evolution.malusJ == 16 || p.evolution.malusJ == 25 || p.evolution.malusJ == 35 || p.evolution.malusJ == 2 || p.evolution.malusJ == 7 || p.evolution.malusJ == 14 || p.evolution.malusJ == 33 || p.evolution.malusJ == 40 || p.evolution.malusJ == 45 || p.evolution.malusJ == 12 || p.evolution.malusJ == 22 || p.evolution.malusJ == 31 || p.evolution.malusJ == 38 || p.evolution.malusJ == 43 || p.evolution.malusJ == 47 || p.evolution.malusJ == 20 || p.evolution.malusJ == 29 || p.evolution.malusJ == 36 || p.evolution.malusJ == 11 || p.evolution.malusJ == 18 || p.evolution.malusJ == 27 );	
 			//////////////////////ModifJSON//////////////////////////////////
 				
-								CreaJS(argc, nom);
+					if (argc==0){
+						CreaJS();
+					}
+						else if (argc==1)
+						CreaJSarg(argc, argv); 
 
 			/////////////////////////////////////////////////////////////////
 
@@ -177,7 +182,11 @@ void Jouer (int argc, char nom [50]) {
 
 	//////////////////////ModifJSON//////////////////////////////////
 		
-								CreaJS(argc, nom);
+					if (argc==0){
+						CreaJS();
+					}
+						else if (argc==1)
+						CreaJSarg; 
 
 	/////////////////////////////////////////////////////////////////
 				
@@ -208,7 +217,11 @@ void Jouer (int argc, char nom [50]) {
 					l = getCoupsLegaux(p);
 	//////////////////////ModifJSON//////////////////////////////////
 		
-								CreaJS(argc, nom);
+					if (argc==0){
+						CreaJS();
+					}
+						else if (argc==1)
+						CreaJSarg; 
 
 	/////////////////////////////////////////////////////////////////
 
@@ -225,7 +238,11 @@ void Jouer (int argc, char nom [50]) {
 
 	//////////////////////ModifJSON//////////////////////////////////
 		
-								CreaJS(argc, nom);
+					if (argc==0){
+						CreaJS();
+					}
+						else if (argc==1)
+						CreaJSarg; 
 
 	/////////////////////////////////////////////////////////////////
 
@@ -259,9 +276,8 @@ else
 
 }
 
-void CreaJS(int argc, char nom[50]){
+void CreaJS(){
 
-	if (argc==1){
 				FILE* fichier = NULL;
     			
     			fichier = fopen("Coups.js", "w");
@@ -285,11 +301,13 @@ void CreaJS(int argc, char nom[50]){
 				fprintf(fichier, "]\n");
 				fprintf(fichier, "});");
 				fclose(fichier);
-	}
-	else if (argc==2){
-			FILE* fichier = NULL;
+}
+
+void CreaJSarg(int argc, char **argv){
+
+				FILE* fichier = NULL;
     			
-    			fichier = fopen(nom, "w");
+    			fichier = fopen(argv[1], "w");
 				fprintf(fichier, "traiterJson({\n");
 				fprintf(fichier, "\"trait\":%d,\n", p.trait);
 
@@ -310,6 +328,4 @@ void CreaJS(int argc, char nom[50]){
 				fprintf(fichier, "]\n");
 				fprintf(fichier, "});");
 				fclose(fichier);
-	}
 }
-
