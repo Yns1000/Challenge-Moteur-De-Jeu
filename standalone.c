@@ -69,7 +69,7 @@ do {
              break;
     case 3 : 
 		system(" gnome-terminal -- bash -c \"./ScriptAff.sh\" ");//METTRE L'URL QUE VOUS AVEZ QUAND VOUS LANCEZ LE FICHIER
-		 printf ("\033[34;01m\n\nVeuillez insérer une lettre et appuyer sur entrer pour revenir au menu.\033[00m\n");
+		 printf ("\033[34;01m\n\n      *************Cliquez sur le terminal puis selectionnez 1************\033[00m\n");
 			 break;
     case 4 :  /// SECTION REGLE
 			
@@ -112,36 +112,50 @@ void Aff(){
 
 void Jouer (int argc, char nom [50]) {
 	//Pt bonus/malus ////////////// DEBUT (ne pas toucher !!!)
+
+system("clear");
 			
 			do{
 				printf("\033[33;01m\n\n Joueur : 1 (jaune) **BONUS** \n\n Veuillez placer votre bonus à la place d'un pion jaune disponible : \033[00m");
 				scanf("%hhd", &p.evolution.bonusJ);
 
 				if(p.evolution.bonusJ<0 || p.evolution.bonusJ>47 || p.evolution.bonusJ == 0 || p.evolution.bonusJ == 4 || p.evolution.bonusJ == 9 || p.evolution.bonusJ == 16 || p.evolution.bonusJ == 25 || p.evolution.bonusJ == 35 || p.evolution.bonusJ == 2 || p.evolution.bonusJ == 7 || p.evolution.bonusJ == 14 || p.evolution.bonusJ == 33 || p.evolution.bonusJ == 40 || p.evolution.bonusJ == 45 || p.evolution.bonusJ == 12 || p.evolution.bonusJ == 22 || p.evolution.bonusJ == 31 || p.evolution.bonusJ == 38 || p.evolution.bonusJ == 43 || p.evolution.bonusJ == 47 || p.evolution.bonusJ == 20 || p.evolution.bonusJ == 29 || p.evolution.bonusJ == 36 || p.evolution.bonusJ == 11 || p.evolution.bonusJ == 18 || p.evolution.bonusJ == 27 )
+					
 					printf("\033[34;01m\n\nSaisie incorrect monsieur JAUNE, veuillez placer votre bonus à la place d'un pion jaune disponible...\033[00m\n\n");
 				}while (p.evolution.bonusJ<0 || p.evolution.bonusJ>47 || p.evolution.bonusJ == 0 || p.evolution.bonusJ == 4 || p.evolution.bonusJ == 9 || p.evolution.bonusJ == 16 || p.evolution.bonusJ == 25 || p.evolution.bonusJ == 35 || p.evolution.bonusJ == 2 || p.evolution.bonusJ == 7 || p.evolution.bonusJ == 14 || p.evolution.bonusJ == 33 || p.evolution.bonusJ == 40 || p.evolution.bonusJ == 45 || p.evolution.bonusJ == 12 || p.evolution.bonusJ == 22 || p.evolution.bonusJ == 31 || p.evolution.bonusJ == 38 || p.evolution.bonusJ == 43 || p.evolution.bonusJ == 47 || p.evolution.bonusJ == 20 || p.evolution.bonusJ == 29 || p.evolution.bonusJ == 36 || p.evolution.bonusJ == 11 || p.evolution.bonusJ == 18 || p.evolution.bonusJ == 27 );
+
+system("clear");
 
 			do{
 				printf("\033[31;01m\n\n Joueur : 2 (rouge) **BONUS** \n\n Veuillez placer votre bonus à la place d'un pion rouge disponible et différent des pions précédemment utilisés pour les autres bonus/malus : \033[00m");
 				scanf("%hhd", &p.evolution.bonusR);
 
 				if(p.evolution.bonusR<0 || p.evolution.bonusR>47 || p.evolution.bonusR == p.evolution.bonusJ || p.evolution.bonusR == 19 || p.evolution.bonusR == 1 || p.evolution.bonusR == 5 || p.evolution.bonusR == 10 || p.evolution.bonusR == 17 || p.evolution.bonusR == 26 || p.evolution.bonusR == 3 || p.evolution.bonusR == 8 || p.evolution.bonusR == 15 || p.evolution.bonusR == 24 || p.evolution.bonusR == 34 || p.evolution.bonusR == 41 || p.evolution.bonusR == 6 || p.evolution.bonusR == 13 || p.evolution.bonusR == 23 || p.evolution.bonusR == 32 || p.evolution.bonusR == 39 || p.evolution.bonusR == 44 || p.evolution.bonusR == 21 || p.evolution.bonusR == 30 || p.evolution.bonusR == 37 || p.evolution.bonusR == 42 || p.evolution.bonusR == 46 || p.evolution.bonusR == 28 )
+					
 					printf("\033[34;01m\n\nSaisie incorrect monsieur ROUGE, veuillez placer votre bonus à la place d'un pion rouge disponible, \ndifférent des pions précédemment utilisés pour les autres bonus/malus...\033[00m\n\n");
 			
 			}while (p.evolution.bonusR<0 || p.evolution.bonusR>47 || p.evolution.bonusR == p.evolution.bonusJ || p.evolution.bonusR == 19 || p.evolution.bonusR == 1 || p.evolution.bonusR == 5 || p.evolution.bonusR == 10 || p.evolution.bonusR == 17 || p.evolution.bonusR == 26 || p.evolution.bonusR == 3 || p.evolution.bonusR == 8 || p.evolution.bonusR == 15 || p.evolution.bonusR == 24 || p.evolution.bonusR == 34 || p.evolution.bonusR == 41 || p.evolution.bonusR == 6 || p.evolution.bonusR == 13 || p.evolution.bonusR == 23 || p.evolution.bonusR == 32 || p.evolution.bonusR == 39 || p.evolution.bonusR == 44 || p.evolution.bonusR == 21 || p.evolution.bonusR == 30 || p.evolution.bonusR == 37 || p.evolution.bonusR == 42 || p.evolution.bonusR == 46 || p.evolution.bonusR == 28 );			
+			
+system("clear");
+			
 			do{
 				printf("\033[31;01m\n\n Joueur : 2 (rouge) **MALUS** \n\n Veuillez placer votre malus à la place d'un pion rouge disponible et différent des pions précédemment utilisés pour les autres bonus/malus : \033[00m");
 				scanf("%hhd", &p.evolution.malusR);
 
 				if (p.evolution.malusR<0 || p.evolution.malusR>47 || p.evolution.malusR == p.evolution.bonusJ || p.evolution.malusR == p.evolution.bonusR || p.evolution.malusR == 19 || p.evolution.malusR == 1 || p.evolution.malusR == 5 || p.evolution.malusR == 10 || p.evolution.malusR == 17 || p.evolution.malusR == 26 || p.evolution.malusR == 3 || p.evolution.malusR == 8 || p.evolution.malusR == 15 || p.evolution.malusR == 24 || p.evolution.malusR == 34 || p.evolution.malusR == 41 || p.evolution.malusR == 6 || p.evolution.malusR == 13 || p.evolution.malusR == 23 || p.evolution.malusR == 32 || p.evolution.malusR == 39 || p.evolution.malusR == 44 || p.evolution.malusR == 21 || p.evolution.malusR == 30 || p.evolution.malusR == 37 || p.evolution.malusR == 42 || p.evolution.malusR == 46 || p.evolution.malusR == 28 )
+					
 					printf("\033[34;01m\n\nSaisie incorrect monsieur ROUGE, veuillez placer votre malus à la place d'un pion rouge disponible, \ndifférent des pions précédemment utilisés pour les autres bonus/malus...\033[00m\n\n");
 			
 			}while (p.evolution.malusR<0 || p.evolution.malusR>47 || p.evolution.malusR == p.evolution.bonusJ || p.evolution.malusR == p.evolution.bonusR || p.evolution.malusR == 19 || p.evolution.malusR == 1 || p.evolution.malusR == 5 || p.evolution.malusR == 10 || p.evolution.malusR == 17 || p.evolution.malusR == 26 || p.evolution.malusR == 3 || p.evolution.malusR == 8 || p.evolution.malusR == 15 || p.evolution.malusR == 24 || p.evolution.malusR == 34 || p.evolution.malusR == 41 || p.evolution.malusR == 6 || p.evolution.malusR == 13 || p.evolution.malusR == 23 || p.evolution.malusR == 32 || p.evolution.malusR == 39 || p.evolution.malusR == 44 || p.evolution.malusR == 21 || p.evolution.malusR == 30 || p.evolution.malusR == 37 || p.evolution.malusR == 42 || p.evolution.malusR == 46 || p.evolution.malusR == 28 );
+			
+system("clear");
+			
 			do{
 				printf("\033[33;01m\n\n Joueur : 1 (jaune) **MALUS** \n\n Veuillez placer votre malus à la place d'un pion jaune disponible et différent des pions précédemment utilisés pour les autres bonus/malus : \033[00m");
 				scanf("%hhd", &p.evolution.malusJ);
 
 				if (p.evolution.malusJ<0 || p.evolution.malusJ>47 || p.evolution.malusJ == p.evolution.bonusJ || p.evolution.malusJ == p.evolution.bonusR || p.evolution.malusJ == p.evolution.malusR || p.evolution.malusJ == 0 || p.evolution.malusJ == 4 || p.evolution.malusJ == 9 || p.evolution.malusJ == 16 || p.evolution.malusJ == 25 || p.evolution.malusJ == 35 || p.evolution.malusJ == 2 || p.evolution.malusJ == 7 || p.evolution.malusJ == 14 || p.evolution.malusJ == 33 || p.evolution.malusJ == 40 || p.evolution.malusJ == 45 || p.evolution.malusJ == 12 || p.evolution.malusJ == 22 || p.evolution.malusJ == 31 || p.evolution.malusJ == 38 || p.evolution.malusJ == 43 || p.evolution.malusJ == 47 || p.evolution.malusJ == 20 || p.evolution.malusJ == 29 || p.evolution.malusJ == 36 || p.evolution.malusJ == 11 || p.evolution.malusJ == 18 || p.evolution.malusJ == 27 )
+					
 					printf("\033[34;01m\n\nSaisie incorrect monsieur JAUNE, veuillez placer votre malus à la place d'un pion jaune disponible, \ndifférent des pions précédemment utilisés pour les autres bonus/malus...\033[00m\n\n");
 			
 			}while (p.evolution.malusJ<0 || p.evolution.malusJ>47 || p.evolution.malusJ == p.evolution.bonusJ || p.evolution.malusJ == p.evolution.bonusR || p.evolution.malusJ == p.evolution.malusR || p.evolution.malusJ == 0 || p.evolution.malusJ == 4 || p.evolution.malusJ == 9 || p.evolution.malusJ == 16 || p.evolution.malusJ == 25 || p.evolution.malusJ == 35 || p.evolution.malusJ == 2 || p.evolution.malusJ == 7 || p.evolution.malusJ == 14 || p.evolution.malusJ == 33 || p.evolution.malusJ == 40 || p.evolution.malusJ == 45 || p.evolution.malusJ == 12 || p.evolution.malusJ == 22 || p.evolution.malusJ == 31 || p.evolution.malusJ == 38 || p.evolution.malusJ == 43 || p.evolution.malusJ == 47 || p.evolution.malusJ == 20 || p.evolution.malusJ == 29 || p.evolution.malusJ == 36 || p.evolution.malusJ == 11 || p.evolution.malusJ == 18 || p.evolution.malusJ == 27 );	
@@ -155,8 +169,9 @@ void Jouer (int argc, char nom [50]) {
 	afficherPosition(p);//Positions avant changements
 
 		do {
-
+system("clear");
 			do{
+			
 				l=getCoupsLegaux(p);
 				l = getCoupsLegaux(p);
 				printf("\033[33;01m\n\n-> Joueur JAUNE\033[00m\n");
@@ -190,7 +205,7 @@ void Jouer (int argc, char nom [50]) {
 				l = getCoupsLegaux(p);
 				printf("\n\n il reste %d coups legaux (FIN SI 0)\n\n", l.nb);
 					test=l.nb;
-			
+system("clear");	
 			do{
 				printf("\033[31;01m\n\n-> Joueur ROUGE\033[00m\n");
 
@@ -302,8 +317,9 @@ void CreaJS(int argc, char nom[50]){
 				fprintf(fichier, "\"bonusR\":%hhd,\n", p.evolution.bonusR);
 				fprintf(fichier, "\"malusR\":%hhd,\n", p.evolution.malusR);
 				fprintf(fichier, "\"cols\":[\n");
-				
-				for (i=0; i<=47; i++){
+
+				for (i = 0; i <= 47; i++)
+				{
 					fprintf(fichier, "	{\"nb\":%hhd, \"couleur\":%hhd},\n", p.cols[i].nb, p.cols[i].couleur);
 				}
 
